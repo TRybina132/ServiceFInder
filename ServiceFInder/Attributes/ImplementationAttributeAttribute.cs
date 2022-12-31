@@ -4,7 +4,7 @@ using ServiceFInder.ServiceScopes;
 namespace ServiceFInder.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-    public class RealizationAttribute : Attribute
+    public class ImplementationAttributeAttribute : Attribute
     {
         private readonly IScope scope;
         private readonly Type abstraction;
@@ -14,7 +14,7 @@ namespace ServiceFInder.Attributes
         public void AddToCollcetion(IServiceCollection services, Type realization) =>
             scope.Add(services, abstraction, realization);
 
-        public RealizationAttribute(
+        public ImplementationAttributeAttribute(
             Type abstraction,
             Scope scope)
         {

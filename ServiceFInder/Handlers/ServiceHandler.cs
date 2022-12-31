@@ -8,8 +8,8 @@ namespace ServiceFInder.Handlers
     {
         private static void AddService(Type realization, IServiceCollection services)
         {
-            RealizationAttribute? realizationAttr =
-                realization.GetCustomAttribute<RealizationAttribute>();
+            ImplementationAttributeAttribute? realizationAttr =
+                realization.GetCustomAttribute<ImplementationAttributeAttribute>();
 
             realizationAttr?.AddToCollcetion(services, realization);
         }
@@ -18,7 +18,7 @@ namespace ServiceFInder.Handlers
         {
             var realizations = assembly
                 .GetTypes()
-                .Where(t => t.IsDefined(typeof(RealizationAttribute)));
+                .Where(t => t.IsDefined(typeof(ImplementationAttributeAttribute)));
 
             return realizations.ToList();
         }
